@@ -1,0 +1,74 @@
+// BAB 3. MEMBUAT APLIKASI SEDERHANA
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.pink,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("Konverter Suhu"),
+            ),
+            body: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'Masukkan Suhu Dalam Celcius',
+                      ),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    ),
+                    const Row(
+                      children: <Widget>[
+                        Padding(padding: EdgeInsets.fromLTRB(0, 570, 50, 50)),
+                        Column(children: [
+                          Text(
+                            "Suhu dalam Kelvin",
+                          ),
+                          Text(
+                            "150",
+                            style: TextStyle(fontSize: 45),
+                          )
+                        ]),
+                        Padding(padding: EdgeInsets.fromLTRB(0, 570, 50, 50)),
+                        Column(children: [
+                          Text(
+                            "Suhu dalam Reamur",
+                          ),
+                          Text(
+                            "200",
+                            style: TextStyle(fontSize: 45),
+                          )
+                        ]),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: FloatingActionButton.extended(
+                        onPressed: () {},
+                        label: const Text('Konversi Suhu'),
+                        icon: const Icon(Icons.done),
+                        backgroundColor: Colors.pink,
+                      ),
+                    ),
+                  ],
+                ))));
+  }
+}
